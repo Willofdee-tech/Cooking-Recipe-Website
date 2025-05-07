@@ -3,165 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlavorFusion | Home</title>
+    <title>Simple Recipe Website</title>
     <style>
-        :root {
-            --primary: #ff6b6b;
-            --secondary: #ffa502;
-            --dark: #2f3542;
-            --light: #f1f2f6;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
         }
         
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
+        header {
+            background-color: #ff6b6b;
             color: white;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 800px;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 8px;
             margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
-        }
-        
-        .btn:hover {
-            background: transparent;
-            color: var(--primary);
-        }
-        
-        .tagline {
-            padding: 80px 20px;
-            text-align: center;
-            background-color: white;
-        }
-        
-        .tagline h2 {
+        h1 {
+            margin: 0;
             font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 30px;
         }
         
-        .tagline p {
-            max-width: 800px;
-            margin: 0 auto 40px;
-            font-size: 1.2rem;
+        .recipe-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
         
-        .features {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 50px 20px;
-            background-color: var(--light);
-        }
-        
-        .feature-card {
+        .recipe-card {
             background: white;
-            margin: 20px;
-            padding: 30px;
-            border-radius: 10px;
-            width: 300px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
         
-        .feature-card:hover {
-            transform: translateY(-10px);
+        .recipe-card:hover {
+            transform: translateY(-5px);
         }
         
-        .feature-card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+        .recipe-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
         }
         
-        .feature-card h3 {
-            margin-bottom: 15px;
-            color: var(--dark);
+        .recipe-content {
+            padding: 20px;
         }
         
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
+        h2 {
+            color: #ff6b6b;
+            margin-top: 0;
+        }
+        
+        h3 {
+            color: #555;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .active-recipe {
+            grid-column: 1 / -1;
+        }
+        
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .back-button:hover {
+            background-color: #ff5252;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <section class="hero">
-        <h1>Discover the Joy of Cooking</h1>
-        <p>Explore hundreds of delicious recipes from around the world, carefully curated for home cooks of all skill levels.</p>
-        <a href="#recipes" class="btn">Browse Recipes</a>
-    </section>
+    <header>
+        <h1>Simple Recipe Collection</h1>
+    </header>
     
-    <section class="tagline">
-        <h2>Why Choose FlavorFusion?</h2>
-        <p>We believe cooking should be fun, accessible, and rewarding. Our recipes are tested, our instructions are clear, and our flavors are unforgettable. Whether you're a beginner or a seasoned chef, you'll find inspiration in our kitchen.</p>
-    </section>
+    <div class="recipe-container" id="recipeContainer">
+        <!-- Recipe cards will be inserted here by JavaScript -->
+    </div>
     
-    <section class="features">
-        <div class="feature-card">
-            <i class="fas fa-utensils"></i>
-            <h3>Easy Recipes</h3>
-            <p>Step-by-step instructions with common ingredients for stress-free cooking.</p>
-        </div>
-        
-        <div class="feature-card">
-            <i class="fas fa-clock"></i>
-            <h3>Quick Meals</h3>
-            <p>Delicious dishes that fit into your busy schedule, from 15-minute meals to slow cooker favorites.</p>
-        </div>
-        
-        <div class="feature-card">
-            <i class="fas fa-heart"></i>
-            <h3>Healthy Options</h3>
-            <p>Nutritious meals that don't compromise on taste, with dietary filters for all needs.</p>
-        </div>
-    </section>
+    <script>
+        // Recipe data
+        const recipes = [
+            {
+                id: 1,
+                name: "Chocolate Chip Cookies",
+                image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35",
+                ingredients: [
+                    "2 1/4 cups all-purpose flour",
+                    "1 tsp baking soda",
+                    "1 tsp salt",
+                    "1 cup (2 sticks) butter, softened",
+                    "3/4 cup granulated sugar",
+                    "3/4 cup packed brown sugar",
+                    "1 tsp vanilla extract",
+                    "2 large eggs",
+                    "2 cups (12-oz. pkg.) semi-sweet chocolate chips"
+                ],
+                instructions: [
+                    "Preheat oven to 375°F.",
+                    "Combine flour, baking soda and salt in small bowl.",
+                    "Beat butter, granulated sugar, brown sugar and vanilla extract in large mixer bowl until creamy.",
+                    "Add eggs one at a time, beating well after each addition.",
+                    "Gradually beat in flour mixture.",
+                    "Stir in chocolate chips.",
+                    "Drop by rounded tablespoon onto ungreased baking sheets.",
+                    "Bake for 9 to 11 minutes or until golden brown.",
+                    "Cool on baking sheets for 2 minutes; remove to wire racks to cool completely."
+                ]
+            },
+            {
+                id: 2,
+                name: "BLT Sandwich",
+                image: "https://images.unsplash.com/photo-1561758033-7e924f619b47",
+                ingredients: [
+                    "2 slices bread (white or whole wheat)",
+                    "3-4 strips bacon, cooked",
+                    "2-3 leaves lettuce",
+                    "2-3 slices tomato",
+                    "Mayonnaise to taste",
+                    "Salt and pepper to taste"
+                ],
+                instructions: [
+                    "Toast the bread if desired.",
+                    "Spread mayonnaise on one side of each bread slice.",
+                    "Layer lettuce, tomato slices, and bacon on one slice of bread.",
+                    "Season with salt and pepper.",
+                    "Top with the second slice of bread.",
+                    "Cut in half and serve immediately."
+                ]
+            },
+            {
+                id: 3,
+                name: "Peanut Butter and Jelly Sandwich",
+                image: "https://images.unsplash.com/photo-1603048719539-8fe144e9f718",
+                ingredients: [
+                    "2 slices bread (white or whole wheat)",
+                    "2 tbsp peanut butter",
+                    "2 tbsp jelly or jam (grape or strawberry work well)"
+                ],
+                instructions: [
+                    "Spread peanut butter on one slice of bread.",
+                    "Spread jelly on the other slice of bread.",
+                    "Press the two slices together with the spreads facing inward.",
+                    "Cut in half if desired and serve."
+                ]
+            },
+            {
+                id: 4,
+                name: "Simple Tomato Pasta",
+                image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb",
+                ingredients: [
+                    "8 oz pasta (spaghetti or penne)",
+                    "2 tbsp olive oil",
+                    "2 cloves garlic, minced",
+                    "1 can (14 oz) crushed tomatoes",
+                    "1/2 tsp salt",
+                    "1/4 tsp black pepper",
+                    "1/4 tsp red pepper flakes (optional)",
+                    "Fresh basil leaves for garnish",
+                    "Parmesan cheese for serving"
+                ],
+                instructions: [
+                    "Cook pasta according to package directions until al dente. Drain and set aside.",
+                    "While pasta cooks, heat olive oil in a large skillet over medium heat.",
+                    "Add minced garlic and sauté for 30 seconds until fragrant.",
+                    "Add crushed tomatoes, salt, black pepper, and red pepper flakes if using.",
+                    "Simmer for 10 minutes, stirring occasionally.",
+                    "Add cooked pasta to the skillet and toss to coat with the sauce.",
+                    "Serve garnished with fresh basil and grated Parmesan cheese."
+                ]
+            }
+        ];
+
+        // Function to display recipe cards
+        function displayRecipeCards() {
+            const container = document.getElementById('recipeContainer');
+            container.innerHTML = '';
+            
+            recipes.forEach(recipe => {
+                const card = document.createElement('div');
+                card.className = 'recipe-card';
+                card.innerHTML = `
+                    <div class="recipe-image" style="background-image: url('${recipe.image}')"></div>
+                    <div class="recipe-content">
+                        <h2>${recipe.name}</h2>
+                        <button onclick="showRecipeDetail(${recipe.id})">View Recipe</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Function to show recipe details
+        function showRecipeDetail(recipeId) {
+            const recipe = recipes.find(r => r.id === recipeId);
+            const container = document.getElementById('recipeContainer');
+            
+            container.innerHTML = `
+                <div class="recipe-card active-recipe">
+                    <div class="recipe-image" style="background-image: url('${recipe.image}')"></div>
+                    <div class="recipe-content">
+                        <h2>${recipe.name}</h2>
+                        
+                        <h3>Ingredients</h3>
+                        <ul>
+                            ${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}
+                        </ul>
+                        
+                        <h3>Instructions</h3>
+                        <ol>
+                            ${recipe.instructions.map(step => `<li>${step}</li>`).join('')}
+                        </ol>
+                        
+                        <button class="back-button" onclick="displayRecipeCards()">Back to All Recipes</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize the page
+        displayRecipeCards();
+    </script>
 </body>
 </html>
