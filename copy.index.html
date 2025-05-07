@@ -1,289 +1,86 @@
+<!-- login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Simple Recipe Viewer</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      margin: 0;
-      padding: 0;
-    }
-    .centered {
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    input[type="text"], input[type="password"] {
-      padding: 10px;
-      width: 80%;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      padding: 10px 20px;
-      background: #3498db;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .hidden {
-      display: none;
-    }
-    .recipe-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-    }
-    .recipe-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      overflow: hidden;
-      width: 250px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .recipe-card:hover {
-      transform: scale(1.03);
-    }
-    .recipe-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-    .recipe-content {
-      padding: 15px;
-    }
-    .recipe-title {
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-    #recipeModal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      z-index: 1000;
-      padding: 40px;
-      box-sizing: border-box;
-    }
-    #modalContent {
-      background: white;
-      padding: 20px;
-      max-width: 600px;
-      margin: 40px auto;
-      border-radius: 10px;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    .login-image {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-  </style>
+  <title>Login - Recipe App</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="login-container">
+    <h1>Welcome to the Recipe App!</h1>
+    <img src="images/chef.png" alt="Chef Image" class="login-image">
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Enter your name" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
 
-<div id="loginBox" class="centered">
-  <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=60" alt="Welcome Food" class="login-image">
-  <h2>Welcome to Recipe World!</h2>
-  <p>Login to explore mouth-watering recipes or continue as a guest.</p>
-  <form id="loginForm">
-    <input type="text" placeholder="Username" required><br>
-    <input type="password" placeholder="Password" required><br>
-    <button type="submit">Login</button>
-  </form>
-  <p>or</p>
-  <button id="guestBtn">Continue as Guest</button>
-</div>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      localStorage.setItem('username', username);
+      window.location.href = 'recipes.html';
+    });
+  </script>
+</body>
+</html>
 
-<div id="searchSection" class="centered hidden">
-  <input type="text" id="searchInput" placeholder="Search recipes..." oninput="searchRecipes()">
-</div>
+<!-- recipes.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1 id="greeting"></h1>
+  <div id="recipes-list" class="recipe-grid"></div>
 
-<div id="recipeList" class="recipe-list hidden"></div>
+  <script>
+    const username = localStorage.getItem('username') || 'Guest';
+    document.getElementById('greeting').textContent = `Hello, ${username}! Here are some recipes:`;
 
-<!-- Modal -->
-<div id="recipeModal">
-  <div id="modalContent"></div>
-</div>
+    const recipes = [
+      {
+        id: 1,
+        title: "Spaghetti Bolognese",
+        image: "images/spaghetti.jpg",
+        description: "A hearty Italian classic."
+      },
+      {
+        id: 2,
+        title: "Chicken Curry",
+        image: "images/curry.jpg",
+        description: "Spicy and flavorful Indian curry."
+      },
+      {
+        id: 3,
+        title: "Vegetable Stir Fry",
+        image: "images/stirfry.jpg",
+        description: "Quick and healthy Asian stir fry."
+      }
+    ];
 
-<script>
-  const recipes = [
-    {
-      title: "Chocolate Chip Cookies",
-      description: "Classic chewy cookies packed with chocolate chips.",
-      image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=60",
-      ingredients: [
-        "2 cups flour",
-        "1 tsp baking soda",
-        "1/2 tsp salt",
-        "1 cup butter",
-        "1 cup sugar",
-        "2 eggs",
-        "2 cups chocolate chips"
-      ],
-      steps: [
-        "Preheat oven to 350°F (175°C).",
-        "Mix dry ingredients in one bowl.",
-        "Cream butter and sugar, then add eggs.",
-        "Combine wet and dry ingredients.",
-        "Stir in chocolate chips.",
-        "Scoop onto baking sheet and bake 10-12 minutes."
-      ]
-    },
-    {
-      title: "BLT Sandwich",
-      description: "Bacon, lettuce, tomato, and mayo on toasted bread.",
-      image: "https://images.unsplash.com/photo-1561758033-7e924f619b47?auto=format&fit=crop&w=800&q=60",
-      ingredients: [
-        "2 slices bread",
-        "3 slices bacon",
-        "Lettuce",
-        "Tomato slices",
-        "Mayonnaise"
-      ],
-      steps: [
-        "Toast the bread.",
-        "Cook bacon until crispy.",
-        "Spread mayo on toast.",
-        "Layer lettuce, tomato, and bacon.",
-        "Top with second slice and serve."
-      ]
-    },
-    {
-      title: "Spaghetti Carbonara",
-      description: "Creamy pasta with pancetta, cheese, and eggs.",
-      image: "https://images.unsplash.com/photo-1589308078054-8324988b2b9b?auto=format&fit=crop&w=800&q=60",
-      ingredients: [
-        "200g spaghetti",
-        "100g pancetta",
-        "2 eggs",
-        "1/2 cup grated parmesan",
-        "Black pepper"
-      ],
-      steps: [
-        "Cook spaghetti and drain.",
-        "Cook pancetta until crispy.",
-        "Whisk eggs and cheese in a bowl.",
-        "Mix everything quickly while pasta is hot.",
-        "Serve with extra cheese and pepper."
-      ]
-    },
-    {
-      title: "Avocado Toast",
-      description: "Healthy and quick breakfast toast with avocado.",
-      image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=60",
-      ingredients: [
-        "2 slices whole grain bread",
-        "1 ripe avocado",
-        "Lemon juice",
-        "Salt & pepper",
-        "Chili flakes (optional)"
-      ],
-      steps: [
-        "Toast the bread slices.",
-        "Mash avocado with lemon juice, salt, and pepper.",
-        "Spread on toast and top with chili flakes if desired."
-      ]
-    },
-    {
-      title: "Pancakes",
-      description: "Fluffy homemade pancakes perfect for breakfast.",
-      image: "https://images.unsplash.com/photo-1587731507764-aa0ef8e31085?auto=format&fit=crop&w=800&q=60",
-      ingredients: [
-        "1 1/2 cups flour",
-        "3 1/2 tsp baking powder",
-        "1 tsp salt",
-        "1 tbsp sugar",
-        "1 1/4 cups milk",
-        "1 egg",
-        "3 tbsp melted butter"
-      ],
-      steps: [
-        "Mix dry ingredients in a bowl.",
-        "Add milk, egg, and butter. Stir until smooth.",
-        "Pour batter on hot greased pan.",
-        "Cook until bubbles form, then flip.",
-        "Serve with syrup or toppings."
-      ]
-    }
-  ];
-
-  function displayRecipes(filter = "") {
-    const list = document.getElementById("recipeList");
-    list.innerHTML = "";
-    const filtered = recipes.filter(r => r.title.toLowerCase().includes(filter.toLowerCase()));
-    filtered.forEach((recipe, index) => {
-      const card = document.createElement("div");
-      card.className = "recipe-card";
+    const container = document.getElementById('recipes-list');
+    recipes.forEach(recipe => {
+      const card = document.createElement('div');
+      card.className = 'recipe-card';
       card.innerHTML = `
         <img src="${recipe.image}" alt="${recipe.title}">
-        <div class="recipe-content">
-          <h3 class="recipe-title">${recipe.title}</h3>
-          <p>${recipe.description}</p>
-        </div>
+        <h2>${recipe.title}</h2>
+        <p>${recipe.description}</p>
+        <button onclick="viewRecipe(${recipe.id})">View Recipe</button>
       `;
-      card.addEventListener("click", () => openModal(index));
-      list.appendChild(card);
+      container.appendChild(card);
     });
-  }
 
-  function searchRecipes() {
-    const query = document.getElementById("searchInput").value;
-    displayRecipes(query);
-  }
-
-  function openModal(index) {
-    const recipe = recipes[index];
-    const modal = document.getElementById("recipeModal");
-    const modalContent = document.getElementById("modalContent");
-
-    modalContent.innerHTML = `
-      <h2>${recipe.title}</h2>
-      <img src="${recipe.image}" style="width:100%; border-radius:8px; margin-bottom:1rem;" alt="${recipe.title}">
-      <h3>Ingredients</h3>
-      <ul>${recipe.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-      <h3>Steps</h3>
-      <ol>${recipe.steps.map(s => `<li>${s}</li>`).join("")}</ol>
-      <button onclick="closeModal()" style="margin-top:1rem; padding:10px 20px; background:#e74c3c; color:white; border:none; border-radius:5px;">Close</button>
-    `;
-    modal.style.display = "block";
-  }
-
-  function closeModal() {
-    document.getElementById("recipeModal").style.display = "none";
-  }
-
-  document.getElementById("loginForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    document.getElementById("loginBox").classList.add("hidden");
-    document.getElementById("searchSection").classList.remove("hidden");
-    document.getElementById("recipeList").classList.remove("hidden");
-    displayRecipes();
-  });
-
-  document.getElementById("guestBtn").addEventListener("click", function() {
-    document.getElementById("loginBox").classList.add("hidden");
-    document.getElementById("searchSection").classList.remove("hidden");
-    document.getElementById("recipeList").classList.remove("hidden");
-    displayRecipes();
-  });
-</script>
-
+    function viewRecipe(id) {
+      localStorage.setItem('selectedRecipeId', id);
+      window.location.href = 'recipe.html';
+    }
+  </script>
 </body>
 </html>
