@@ -89,12 +89,19 @@
       max-height: 80vh;
       overflow-y: auto;
     }
+    .login-image {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
 
 <div id="loginBox" class="centered">
-  <h2>Login</h2>
+  <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=60" alt="Welcome Food" class="login-image">
+  <h2>Welcome to Recipe World!</h2>
+  <p>Login to explore mouth-watering recipes or continue as a guest.</p>
   <form id="loginForm">
     <input type="text" placeholder="Username" required><br>
     <input type="password" placeholder="Password" required><br>
@@ -156,6 +163,63 @@
         "Spread mayo on toast.",
         "Layer lettuce, tomato, and bacon.",
         "Top with second slice and serve."
+      ]
+    },
+    {
+      title: "Spaghetti Carbonara",
+      description: "Creamy pasta with pancetta, cheese, and eggs.",
+      image: "https://images.unsplash.com/photo-1589308078054-8324988b2b9b?auto=format&fit=crop&w=800&q=60",
+      ingredients: [
+        "200g spaghetti",
+        "100g pancetta",
+        "2 eggs",
+        "1/2 cup grated parmesan",
+        "Black pepper"
+      ],
+      steps: [
+        "Cook spaghetti and drain.",
+        "Cook pancetta until crispy.",
+        "Whisk eggs and cheese in a bowl.",
+        "Mix everything quickly while pasta is hot.",
+        "Serve with extra cheese and pepper."
+      ]
+    },
+    {
+      title: "Avocado Toast",
+      description: "Healthy and quick breakfast toast with avocado.",
+      image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=60",
+      ingredients: [
+        "2 slices whole grain bread",
+        "1 ripe avocado",
+        "Lemon juice",
+        "Salt & pepper",
+        "Chili flakes (optional)"
+      ],
+      steps: [
+        "Toast the bread slices.",
+        "Mash avocado with lemon juice, salt, and pepper.",
+        "Spread on toast and top with chili flakes if desired."
+      ]
+    },
+    {
+      title: "Pancakes",
+      description: "Fluffy homemade pancakes perfect for breakfast.",
+      image: "https://images.unsplash.com/photo-1587731507764-aa0ef8e31085?auto=format&fit=crop&w=800&q=60",
+      ingredients: [
+        "1 1/2 cups flour",
+        "3 1/2 tsp baking powder",
+        "1 tsp salt",
+        "1 tbsp sugar",
+        "1 1/4 cups milk",
+        "1 egg",
+        "3 tbsp melted butter"
+      ],
+      steps: [
+        "Mix dry ingredients in a bowl.",
+        "Add milk, egg, and butter. Stir until smooth.",
+        "Pour batter on hot greased pan.",
+        "Cook until bubbles form, then flip.",
+        "Serve with syrup or toppings."
       ]
     }
   ];
