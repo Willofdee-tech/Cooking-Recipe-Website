@@ -90,7 +90,7 @@
   </div>
 
   <section class="recipes" id="recipeList">
-    <div class="recipe-card" data-title="Spaghetti Bolognese">
+    <div class="recipe-card">
       <img src="https://via.placeholder.com/300x150" alt="Spaghetti Bolognese" />
       <div class="recipe-content">
         <h3 class="recipe-title">Spaghetti Bolognese</h3>
@@ -102,7 +102,7 @@
       </div>
     </div>
 
-    <div class="recipe-card" data-title="Avocado Toast">
+    <div class="recipe-card">
       <img src="https://via.placeholder.com/300x150" alt="Avocado Toast" />
       <div class="recipe-content">
         <h3 class="recipe-title">Avocado Toast</h3>
@@ -114,7 +114,7 @@
       </div>
     </div>
 
-    <div class="recipe-card" data-title="Chicken Curry">
+    <div class="recipe-card">
       <img src="https://via.placeholder.com/300x150" alt="Chicken Curry" />
       <div class="recipe-content">
         <h3 class="recipe-title">Chicken Curry</h3>
@@ -131,9 +131,9 @@
     function filterRecipes() {
       const input = document.getElementById("searchInput").value.toLowerCase();
       const cards = document.querySelectorAll(".recipe-card");
-      
+
       cards.forEach(card => {
-        const title = card.getAttribute("data-title").toLowerCase();
+        const title = card.querySelector(".recipe-title").textContent.toLowerCase();
         if (title.includes(input)) {
           card.style.display = "block";
         } else {
