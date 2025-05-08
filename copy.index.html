@@ -1,147 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Discover Recipes</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fff8f0;
-      margin: 0;
-      color: #333;
-    }
-    header {
-      background-color: #ff6f61;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    .search-bar {
-      margin: 2rem auto;
-      max-width: 500px;
-      display: flex;
-      justify-content: center;
-    }
-    .search-bar input {
-      padding: 0.5rem;
-      width: 80%;
-      border: 1px solid #ccc;
-      border-radius: 4px 0 0 4px;
-    }
-    .search-bar button {
-      padding: 0.5rem 1rem;
-      border: none;
-      background-color: #ff6f61;
-      color: white;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-    }
-    .recipes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
-    }
-    .recipe-card {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.2s;
-    }
-    .recipe-card:hover {
-      transform: scale(1.02);
-    }
-    .recipe-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-    .recipe-content {
-      padding: 1rem;
-    }
-    .recipe-title {
-      margin: 0 0 0.5rem;
-      font-size: 1.2rem;
-      color: #ff6f61;
-    }
-    .recipe-links a {
-      display: block;
-      margin-top: 0.5rem;
-      color: #0077cc;
-      text-decoration: none;
-    }
-    .recipe-links a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Sign Up - QuickBites</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #e67e22;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #e67e22;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .back-link {
+            margin-top: 15px;
+        }
+
+        .back-link a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-
-  <header>
-    <h1>Discover New Recipes</h1>
-    <p>Find your next favorite dish!</p>
-  </header>
-
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search for a recipe..." />
-    <button onclick="filterRecipes()">Search</button>
-  </div>
-
-  <section class="recipes" id="recipeList">
-    <div class="recipe-card">
-      <img src="https://via.placeholder.com/300x150" alt="Spaghetti Bolognese" />
-      <div class="recipe-content">
-        <h3 class="recipe-title">Spaghetti Bolognese</h3>
-        <p>A classic Italian pasta dish with rich meat sauce.</p>
-        <div class="recipe-links">
-          <a href="https://www.youtube.com/watch?v=Ce3tL9MMvE8" target="_blank">📺 Watch Video</a>
-          <a href="https://www.bbcgoodfood.com/recipes/spaghetti-bolognese" target="_blank">📖 Full Recipe</a>
+    <div class="container">
+        <h2>Create Account</h2>
+        <form id="signupForm">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="back-link">
+            Already have an account? <a href="index.html">Login</a>
         </div>
-      </div>
     </div>
 
-    <div class="recipe-card">
-      <img src="https://via.placeholder.com/300x150" alt="Avocado Toast" />
-      <div class="recipe-content">
-        <h3 class="recipe-title">Avocado Toast</h3>
-        <p>Simple, healthy breakfast with smashed avocado and eggs.</p>
-        <div class="recipe-links">
-          <a href="https://www.youtube.com/watch?v=kz1QoZ8yNKw" target="_blank">📺 Watch Video</a>
-          <a href="https://www.loveandlemons.com/avocado-toast/" target="_blank">📖 Full Recipe</a>
-        </div>
-      </div>
-    </div>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-    <div class="recipe-card">
-      <img src="https://via.placeholder.com/300x150" alt="Chicken Curry" />
-      <div class="recipe-content">
-        <h3 class="recipe-title">Chicken Curry</h3>
-        <p>Spicy and flavorful chicken curry served with rice.</p>
-        <div class="recipe-links">
-          <a href="https://www.youtube.com/watch?v=qBMVJ3F4LJI" target="_blank">📺 Watch Video</a>
-          <a href="https://www.allrecipes.com/recipe/46822/indian-chicken-curry-murgh-kari/" target="_blank">📖 Full Recipe</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    function filterRecipes() {
-      const input = document.getElementById("searchInput").value.toLowerCase();
-      const cards = document.querySelectorAll(".recipe-card");
-
-      cards.forEach(card => {
-        const title = card.querySelector(".recipe-title").textContent.toLowerCase();
-        if (title.includes(input)) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    }
-  </script>
-
+            // Simulate user creation (You can connect to a backend later)
+            if (email && password.length >= 6) {
+                alert('Sign up successful! Please log in.');
+                window.location.href = 'index.html';
+            } else {
+                alert('Please enter a valid email and a password with at least 6 characters.');
+            }
+        });
+    </script>
 </body>
 </html>
