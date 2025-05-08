@@ -8,92 +8,122 @@
         background-color: white;
         color: #FF6F00; /* Orange color */
         font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
       }
-      h1, h2, h3 {
-        color: #FF6F00; /* Orange color */
+      h1 {
+        text-align: center;
+        color: #FF6F00;
+      }
+      h2 {
+        color: #FF6F00;
+        border-bottom: 2px solid #FF6F00;
+        padding-bottom: 5px;
       }
       p {
         color: #333; /* Dark text for readability */
       }
       hr {
         border: 1px solid #FF6F00; /* Orange separator line */
+        margin: 30px 0;
       }
       img {
-        max-width: 100%;
-        height: auto;
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
         border-radius: 8px;
         margin: 20px 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+      .recipe {
+        margin-bottom: 40px;
+      }
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        color: #7f8c8d;
       }
     </style>
   </head>
   <body>
     <h1>Shared Recipe Page</h1>
-    <p> Welcome! Try these easy recipes you can try right at home.</p>
+    <p>Welcome! Try these easy recipes you can make right at home.</p>
 
     <hr>
 
-    <h2>Chocolate Chip Cookies</h2>
-    <img src="https://via.placeholder.com/600x400/FF6F00/FFFFFF?text=Chocolate+Chip+Cookies" alt="Chocolate Chip Cookies">
-    <h3>Ingredients:</h3>
-    <ul>
-      <li>1 cup butter</li>
-      <li>1 cup white sugar</li>
-      <li>1 cup of brown sugar</li>
-      <li>2 eggs</li>
-      <li>2 tsp vanilla extract</li>
-      <li>3 cups all-purpose flour</li>
-      <li>1 tsp baking soda</li>
-      <li>1/2 tsp salt</li>
-      <li>2 cups chocolate chips</li>
-    </ul>
-    <h3>Instructions:</h3>
-    <p>Preheat oven to 350 F. Mix all ingredients together. Drop spoonful onto a baking sheet and bake for 10-12 minutes.</p>
+    <div class="recipe">
+      <h2>Chocolate Chip Cookies</h2>
+      <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Chocolate Chip Cookies">
+      <h3>Ingredients:</h3>
+      <ul>
+        <li>1 cup butter</li>
+        <li>1 cup white sugar</li>
+        <li>1 cup of brown sugar</li>
+        <li>2 eggs</li>
+        <li>2 tsp vanilla extract</li>
+        <li>3 cups all-purpose flour</li>
+        <li>1 tsp baking soda</li>
+        <li>1/2 tsp salt</li>
+        <li>2 cups chocolate chips</li>
+      </ul>
+      <h3>Instructions:</h3>
+      <p>Preheat oven to 350 F. Mix all ingredients together. Drop spoonful onto a baking sheet and bake for 10-12 minutes.</p>
+    </div>
 
     <hr>
 
-    <h2>BLT Sandwich</h2>
-    <img src="https://via.placeholder.com/600x400/FF6F00/FFFFFF?text=BLT+Sandwich" alt="BLT Sandwich">
-    <h3>Ingredients:</h3>
-    <ul>
-      <li>2 slices bread</li>
-      <li>3 slices bacon</li>
-      <li>2 slices tomato</li>
-      <li>Lettuce leaves</li>
-      <li>Mayonnaise</li>
-    </ul>
-    <h3>Instructions:</h3>
-    <p>Cook the bacon. Toast the bread. Spread mayo, then add lettuce, tomato, and bacon. Close the sandwich and enjoy!</p>
+    <div class="recipe">
+      <h2>BLT Sandwich</h2>
+      <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="BLT Sandwich">
+      <h3>Ingredients:</h3>
+      <ul>
+        <li>2 slices bread</li>
+        <li>3 slices bacon</li>
+        <li>2 slices tomato</li>
+        <li>Lettuce leaves</li>
+        <li>Mayonnaise</li>
+      </ul>
+      <h3>Instructions:</h3>
+      <p>Cook the bacon. Toast the bread. Spread mayo, then add lettuce, tomato, and bacon. Close the sandwich and enjoy!</p>
+    </div>
 
     <hr>
 
-    <h2>Peanut Butter and Jelly Sandwich</h2>
-    <img src="https://via.placeholder.com/600x400/FF6F00/FFFFFF?text=Peanut+Butter+and+Jelly+Sandwich" alt="Peanut Butter and Jelly Sandwich">
-    <h3>Ingredients:</h3>
-    <ul>
-      <li>2 slices of bread</li>
-      <li>Peanut butter</li>
-      <li>Jelly or jam</li>
-    </ul>
-    <h3>Instructions:</h3>
-    <p>Spread peanut butter onto one slice of the bread, and jelly on the other. Put them together and serve!</p>
+    <div class="recipe">
+      <h2>Peanut Butter and Jelly Sandwich</h2>
+      <img src="https://images.unsplash.com/photo-1633512527761-2f04f64a8f0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Peanut Butter and Jelly Sandwich">
+      <h3>Ingredients:</h3>
+      <ul>
+        <li>2 slices of bread</li>
+        <li>Peanut butter</li>
+        <li>Jelly or jam</li>
+      </ul>
+      <h3>Instructions:</h3>
+      <p>Spread peanut butter onto one slice of the bread, and jelly on the other. Put them together and serve!</p>
+    </div>
 
     <hr>
 
-    <h2>Simple Tomato Pasta</h2>
-    <img src="https://via.placeholder.com/600x400/FF6F00/FFFFFF?text=Simple+Tomato+Pasta" alt="Simple Tomato Pasta">
-    <h3>Ingredients:</h3>
-    <ul>
-      <li>200g pasta</li>
-      <li>Salt</li>
-      <li>1 Cup of tomato sauce</li>
-      <li>Olive oil (optional)</li>
-      <li>Grated cheese (optional)</li>
-    </ul>
-    <h3>Instructions:</h3>
-    <p>Boil pasta in salted water. Drain and mix with tomato sauce. Add olive oil or cheese if you like. Enjoy!</p>
+    <div class="recipe">
+      <h2>Simple Tomato Pasta</h2>
+      <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Simple Tomato Pasta">
+      <h3>Ingredients:</h3>
+      <ul>
+        <li>200g pasta</li>
+        <li>Salt</li>
+        <li>1 Cup of tomato sauce</li>
+        <li>Olive oil (optional)</li>
+        <li>Grated cheese (optional)</li>
+      </ul>
+      <h3>Instructions:</h3>
+      <p>Boil pasta in salted water. Drain and mix with tomato sauce. Add olive oil or cheese if you like. Enjoy!</p>
+    </div>
 
     <hr> 
 
-    <p>&copy; 2025 Shared Recipe Page</p>
+    <footer>
+      <p>&copy; 2025 Shared Recipe Page</p>
+    </footer>
   </body>
 </html>
