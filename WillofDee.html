@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Recipe Website</title>
+    <title>Gourmet Recipe Collection</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -70,6 +70,16 @@
             margin-top: 20px;
         }
         
+        .category {
+            display: inline-block;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+        
         ul, ol {
             padding-left: 20px;
         }
@@ -105,7 +115,7 @@
 </head>
 <body>
     <header>
-        <h1>Simple Recipe Collection</h1>
+        <h1>Gourmet Recipe Collection</h1>
     </header>
     
     <div class="recipe-container" id="recipeContainer">
@@ -117,91 +127,90 @@
         const recipes = [
             {
                 id: 1,
-                name: "Chocolate Chip Cookies",
-                image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35",
+                name: "Creamy Garlic Parmesan Chicken",
+                category: "Dinner / Main Course",
+                image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143",
                 ingredients: [
-                    "2 1/4 cups all-purpose flour",
-                    "1 tsp baking soda",
-                    "1 tsp salt",
-                    "1 cup (2 sticks) butter, softened",
-                    "3/4 cup granulated sugar",
-                    "3/4 cup packed brown sugar",
-                    "1 tsp vanilla extract",
-                    "2 large eggs",
-                    "2 cups (12-oz. pkg.) semi-sweet chocolate chips"
+                    "4 boneless, skinless chicken breasts",
+                    "1 tbsp olive oil",
+                    "4 garlic cloves (minced)",
+                    "1 cup heavy cream",
+                    "½ cup grated Parmesan cheese",
+                    "1 tsp Italian seasoning",
+                    "Salt and pepper to taste",
+                    "Fresh parsley (for garnish)"
                 ],
                 instructions: [
-                    "Preheat oven to 375°F.",
-                    "Combine flour, baking soda and salt in small bowl.",
-                    "Beat butter, granulated sugar, brown sugar and vanilla extract in large mixer bowl until creamy.",
-                    "Add eggs one at a time, beating well after each addition.",
-                    "Gradually beat in flour mixture.",
-                    "Stir in chocolate chips.",
-                    "Drop by rounded tablespoon onto ungreased baking sheets.",
-                    "Bake for 9 to 11 minutes or until golden brown.",
-                    "Cool on baking sheets for 2 minutes; remove to wire racks to cool completely."
+                    "Season chicken with salt and pepper.",
+                    "Heat olive oil in a skillet over medium heat. Cook chicken until golden and cooked through. Remove and set aside.",
+                    "In the same skillet, sauté garlic for 1 minute.",
+                    "Add cream, Parmesan, and Italian seasoning. Stir until thickened.",
+                    "Return chicken to the pan, spoon sauce over it, and simmer for 5 minutes.",
+                    "Garnish with parsley and serve."
                 ]
             },
             {
                 id: 2,
-                name: "BLT Sandwich",
-                image: "https://images.unsplash.com/photo-1561758033-7e924f619b47",
+                name: "Spicy Mango Salsa",
+                category: "Appetizer / Side Dish",
+                image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716",
                 ingredients: [
-                    "2 slices bread (white or whole wheat)",
-                    "3-4 strips bacon, cooked",
-                    "2-3 leaves lettuce",
-                    "2-3 slices tomato",
-                    "Mayonnaise to taste",
-                    "Salt and pepper to taste"
+                    "2 ripe mangoes (diced)",
+                    "1 red bell pepper (diced)",
+                    "¼ cup red onion (finely chopped)",
+                    "1 jalapeño (seeded and minced)",
+                    "Juice of 1 lime",
+                    "¼ cup fresh cilantro (chopped)",
+                    "Salt to taste"
                 ],
                 instructions: [
-                    "Toast the bread if desired.",
-                    "Spread mayonnaise on one side of each bread slice.",
-                    "Layer lettuce, tomato slices, and bacon on one slice of bread.",
-                    "Season with salt and pepper.",
-                    "Top with the second slice of bread.",
-                    "Cut in half and serve immediately."
+                    "Combine all ingredients in a bowl.",
+                    "Toss gently and chill for 20 minutes.",
+                    "Serve with tortilla chips or grilled chicken/fish."
                 ]
             },
             {
                 id: 3,
-                name: "Peanut Butter and Jelly Sandwich",
-                image: "https://images.unsplash.com/photo-1603048719539-8fe144e9f718",
+                name: "Baked Zucchini Fries",
+                category: "Snack / Healthy Alternative",
+                image: "https://images.unsplash.com/photo-1596797038530-2c107229654b",
                 ingredients: [
-                    "2 slices bread (white or whole wheat)",
-                    "2 tbsp peanut butter",
-                    "2 tbsp jelly or jam (grape or strawberry work well)"
+                    "2 medium zucchinis (cut into sticks)",
+                    "½ cup breadcrumbs",
+                    "¼ cup grated Parmesan cheese",
+                    "1 tsp garlic powder",
+                    "1 tsp Italian seasoning",
+                    "2 eggs (beaten)",
+                    "Salt and pepper to taste"
                 ],
                 instructions: [
-                    "Spread peanut butter on one slice of bread.",
-                    "Spread jelly on the other slice of bread.",
-                    "Press the two slices together with the spreads facing inward.",
-                    "Cut in half if desired and serve."
+                    "Preheat oven to 425°F (220°C). Line a baking sheet with parchment paper.",
+                    "Mix breadcrumbs, Parmesan, garlic powder, and Italian seasoning.",
+                    "Dip zucchini sticks in egg, then breadcrumb mixture.",
+                    "Place on baking sheet and bake for 20–25 minutes or until crispy.",
+                    "Serve with marinara or ranch dipping sauce."
                 ]
             },
             {
                 id: 4,
-                name: "Simple Tomato Pasta",
-                image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb",
+                name: "No-Bake Chocolate Oat Cookies",
+                category: "Dessert",
+                image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb",
                 ingredients: [
-                    "8 oz pasta (spaghetti or penne)",
-                    "2 tbsp olive oil",
-                    "2 cloves garlic, minced",
-                    "1 can (14 oz) crushed tomatoes",
-                    "1/2 tsp salt",
-                    "1/4 tsp black pepper",
-                    "1/4 tsp red pepper flakes (optional)",
-                    "Fresh basil leaves for garnish",
-                    "Parmesan cheese for serving"
+                    "½ cup butter",
+                    "2 cups sugar",
+                    "½ cup milk",
+                    "¼ cup unsweetened cocoa powder",
+                    "1 tsp vanilla extract",
+                    "½ cup peanut butter",
+                    "3 cups quick oats"
                 ],
                 instructions: [
-                    "Cook pasta according to package directions until al dente. Drain and set aside.",
-                    "While pasta cooks, heat olive oil in a large skillet over medium heat.",
-                    "Add minced garlic and sauté for 30 seconds until fragrant.",
-                    "Add crushed tomatoes, salt, black pepper, and red pepper flakes if using.",
-                    "Simmer for 10 minutes, stirring occasionally.",
-                    "Add cooked pasta to the skillet and toss to coat with the sauce.",
-                    "Serve garnished with fresh basil and grated Parmesan cheese."
+                    "In a saucepan, combine butter, sugar, milk, and cocoa. Bring to a boil for 1 minute.",
+                    "Remove from heat and stir in vanilla and peanut butter.",
+                    "Mix in oats until fully coated.",
+                    "Drop spoonfuls onto wax paper and let cool until set (about 30 minutes).",
+                    "Store in an airtight container."
                 ]
             }
         ];
@@ -217,6 +226,7 @@
                 card.innerHTML = `
                     <div class="recipe-image" style="background-image: url('${recipe.image}')"></div>
                     <div class="recipe-content">
+                        <span class="category">${recipe.category}</span>
                         <h2>${recipe.name}</h2>
                         <button onclick="showRecipeDetail(${recipe.id})">View Recipe</button>
                     </div>
@@ -234,6 +244,7 @@
                 <div class="recipe-card active-recipe">
                     <div class="recipe-image" style="background-image: url('${recipe.image}')"></div>
                     <div class="recipe-content">
+                        <span class="category">${recipe.category}</span>
                         <h2>${recipe.name}</h2>
                         
                         <h3>Ingredients</h3>
