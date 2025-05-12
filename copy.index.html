@@ -160,15 +160,17 @@
     <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Delicious food" class="hero-image">
 
     <div class="login-box" id="loginBox">
-      <h2>Welcome Back</h2>
+      <h2>Get Started</h2>
       <form id="loginForm">
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
         <button type="submit" class="login-btn">Login</button>
       </form>
       <p>or</p>
-      <!-- ✅ Button moved OUTSIDE the form -->
       <button class="guest-btn" id="guestBtn">Continue as Guest</button>
+      <div class="signup-link">
+        Don't have an account? <a href="#">Sign up</a>
+      </div>
     </div>
 
     <div class="search-bar hidden" id="searchSection">
@@ -176,12 +178,10 @@
       <button onclick="searchRecipes()">Search</button>
     </div>
 
-    <section class="recipes hidden" id="recipeList">
-      <!-- Recipe cards go here -->
-    </section>
+    <section class="recipes hidden" id="recipeList"></section>
   </div>
 
-  <!-- Modal -->
+  <!-- Recipe Modal -->
   <div id="recipeModal" class="hidden">
     <div class="modal-content">
       <button class="close" onclick="closeModal()">&times;</button>
@@ -191,68 +191,70 @@
   </div>
 
   <script>
-    const loginBox = document.getElementById("loginBox");
-    const guestBtn = document.getElementById("guestBtn");
-    const searchBar = document.getElementById("searchSection");
-    const recipeList = document.getElementById("recipeList");
-    const modal = document.getElementById("recipeModal");
+    document.addEventListener("DOMContentLoaded", function () {
+      const loginBox = document.getElementById("loginBox");
+      const guestBtn = document.getElementById("guestBtn");
+      const searchBar = document.getElementById("searchSection");
+      const recipeList = document.getElementById("recipeList");
+      const modal = document.getElementById("recipeModal");
 
-    const recipes = [
-      {
-        title: "Chocolate Chip Cookies",
-        image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35",
-        instructions: "1. Preheat oven to 350°F.\n2. Mix flour, baking soda, salt.\n3. Cream butter and sugar.\n4. Add eggs, vanilla.\n5. Mix with dry ingredients.\n6. Fold in chocolate chips.\n7. Scoop onto tray and bake 10-12 minutes."
-      },
-      {
-        title: "BLT Sandwich",
-        image: "https://images.unsplash.com/photo-1561758033-7e924f619b47",
-        instructions: "1. Toast bread slices.\n2. Cook bacon until crispy.\n3. Layer bacon, lettuce, tomato on toast.\n4. Spread mayo and top with another slice."
-      },
-      {
-        title: "Peanut Butter & Jelly",
-        image: "https://images.unsplash.com/photo-1603048719539-8fe144e9f718",
-        instructions: "1. Spread peanut butter on one slice of bread.\n2. Spread jelly on the other.\n3. Put slices together and enjoy!"
-      }
-    ];
+      const recipes = [
+        {
+          title: "Chocolate Chip Cookies",
+          image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35",
+          instructions: "1. Preheat oven to 350°F.\n2. Mix flour, baking soda, salt.\n3. Cream butter and sugar.\n4. Add eggs, vanilla.\n5. Mix with dry ingredients.\n6. Fold in chocolate chips.\n7. Scoop onto tray and bake 10-12 minutes."
+        },
+        {
+          title: "BLT Sandwich",
+          image: "https://images.unsplash.com/photo-1561758033-7e924f619b47",
+          instructions: "1. Toast bread slices.\n2. Cook bacon until crispy.\n3. Layer bacon, lettuce, tomato on toast.\n4. Spread mayo and top with another slice."
+        },
+        {
+          title: "Peanut Butter & Jelly",
+          image: "https://images.unsplash.com/photo-1603048719539-8fe144e9f718",
+          instructions: "1. Spread peanut butter on one slice of bread.\n2. Spread jelly on the other.\n3. Put slices together and enjoy!"
+        }
+      ];
 
-    guestBtn.addEventListener("click", () => {
-      loginBox.classList.add("hidden");
-      searchBar.classList.remove("hidden");
-      recipeList.classList.remove("hidden");
-      displayRecipes();
-    });
-
-    function displayRecipes(filter = "") {
-      recipeList.innerHTML = "";
-      const filtered = recipes.filter(r => r.title.toLowerCase().includes(filter.toLowerCase()));
-      filtered.forEach(recipe => {
-        const card = document.createElement("div");
-        card.className = "recipe-card";
-        card.innerHTML = `
-          <img src="${recipe.image}" alt="${recipe.title}">
-          <div class="recipe-content">
-            <h3 class="recipe-title">${recipe.title}</h3>
-            <button onclick="showModal(\`${recipe.title}\`, \`${recipe.instructions.replace(/\n/g, "\\n")}\`)">View Recipe</button>
-          </div>
-        `;
-        recipeList.appendChild(card);
+      guestBtn.addEventListener("click", () => {
+        loginBox.classList.add("hidden");
+        searchBar.classList.remove("hidden");
+        recipeList.classList.remove("hidden");
+        displayRecipes();
       });
-    }
 
-    function searchRecipes() {
-      const value = document.getElementById("searchInput").value;
-      displayRecipes(value);
-    }
+      function displayRecipes(filter = "") {
+        recipeList.innerHTML = "";
+        const filtered = recipes.filter(r => r.title.toLowerCase().includes(filter.toLowerCase()));
+        filtered.forEach(recipe => {
+          const card = document.createElement("div");
+          card.className = "recipe-card";
+          card.innerHTML = `
+            <img src="${recipe.image}" alt="${recipe.title}">
+            <div class="recipe-content">
+              <h3 class="recipe-title">${recipe.title}</h3>
+              <button onclick="showModal('${recipe.title}', \`${recipe.instructions.replace(/\n/g, "\\n")}\`)">View Recipe</button>
+            </div>
+          `;
+          recipeList.appendChild(card);
+        });
+      }
 
-    function showModal(title, instructions) {
-      document.getElementById("modalTitle").innerText = title;
-      document.getElementById("modalInstructions").innerText = instructions.replace(/\\n/g, '\n');
-      modal.classList.remove("hidden");
-    }
+      window.searchRecipes = function () {
+        const value = document.getElementById("searchInput").value;
+        displayRecipes(value);
+      };
 
-    function closeModal() {
-      modal.classList.add("hidden");
-    }
+      window.showModal = function (title, instructions) {
+        document.getElementById("modalTitle").innerText = title;
+        document.getElementById("modalInstructions").innerText = instructions.replace(/\\n/g, '\n');
+        modal.classList.remove("hidden");
+      };
+
+      window.closeModal = function () {
+        modal.classList.add("hidden");
+      };
+    });
   </script>
 </body>
 </html>
